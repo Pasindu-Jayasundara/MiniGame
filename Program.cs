@@ -4,8 +4,8 @@ int windowHeight = Console.WindowHeight;
 string[] playerStatesArray = ["('-')", "(^-^)", "(X_X)"];
 string[] foodArray = ["@@@@@", "$$$$$", "#####"];
 
-int currentPlayerPositionX = 0;
-int currentPlayerPositionY = 0;
+int currentPlayerPositionX = 20;
+int currentPlayerPositionY = 20;
 
 int currentFoodPositionX = 0;
 int currentFoodPositionY = 0;
@@ -18,10 +18,8 @@ int consumedFoodCount = 0;
 Random random = new Random();
 
 SetUpGame();
+IsWindowResized();
 
-while(true){
-    IsWindowResized();
-}
 
 void IsWindowResized(){
 
@@ -40,7 +38,12 @@ void IsWindowResized(){
         }
 
         Console.Clear();
+
+        Console.SetCursorPosition(0, 0);
+        Console.WriteLine("Consumed Food Count: "+consumedFoodCount);
+
     }
+    IsWindowResized();
 }
 
 void DisplayRandomFoodInRandomLocations(){
@@ -50,8 +53,12 @@ void DisplayRandomFoodInRandomLocations(){
     currentFoodPositionX = random.Next(0, windowWidth - currentPlayer.Length);
     currentFoodPositionY = random.Next(0, windowHeight - 1);
 
-    Console.SetCursorPosition(currentFoodPositionX, currentFoodPositionY);
-    Console.Write(foodArray[currentFoodIndex]);
+    if(currentFoodPositionX > 0 && currentFoodPositionX < windowWidth && currentFoodPositionY > 2 && currentFoodPositionY < windowHeight){
+        Console.SetCursorPosition(currentFoodPositionX, currentFoodPositionY);
+        Console.Write(foodArray[currentFoodIndex]);
+    }else{
+        DisplayRandomFoodInRandomLocations();
+    }
 }
 
 void ChangePlayerAppearanceToFoodConsumed(){
@@ -92,7 +99,7 @@ void MovePlayer(){
         MovePlayer();
     }
 
-    if(currentPlayerPositionX < 0 || currentPlayerPositionX >= windowWidth || currentPlayerPositionY < 0 || currentPlayerPositionY >= windowHeight){
+    if(currentPlayerPositionX < 0 && currentPlayerPositionX >= windowWidth && currentPlayerPositionY > 2 && currentPlayerPositionY < windowHeight){
         currentPlayerPositionX = playerLastX;
         currentPlayerPositionY = playerLastY;
     }
@@ -106,10 +113,15 @@ void MovePlayer(){
         consumedFoodCount++;
         DisplayRandomFoodInRandomLocations();
         ChangePlayerAppearanceToFoodConsumed();
+
+        Console.SetCursorPosition(0, 0);
+        Console.WriteLine("Consumed Food Count: "+consumedFoodCount);
     }
 
     Console.SetCursorPosition(currentPlayerPositionX, currentPlayerPositionY);
     Console.Write(currentPlayer);
+    Console.SetCursorPosition(currentPlayerPositionX-currentPlayer.Length+4, currentPlayerPositionY);
+
 
     MovePlayer();
 
@@ -117,8 +129,8 @@ void MovePlayer(){
 
 void SetUpGame(){
 
-    currentPlayerPositionX = 0;
-    currentPlayerPositionY = 0;
+    currentPlayerPositionX = 20;
+    currentPlayerPositionY = 20;
 
     currentFoodPositionX = 0;
     currentFoodPositionY = 0;
@@ -131,9 +143,13 @@ void SetUpGame(){
     Console.Clear();
     DisplayRandomFoodInRandomLocations();
 
-    if(currentPlayerPositionX > 0 && currentPlayerPositionX < Console.WindowWidth && currentPlayerPositionY > 0 && currentPlayerPositionY < Console.WindowHeight){
+    Console.SetCursorPosition(0, 0);
+    Console.WriteLine("Consumed Food Count: "+consumedFoodCount);
+
+    if(currentPlayerPositionX >= 0 && currentPlayerPositionX < Console.WindowWidth && currentPlayerPositionY >= 2 && currentPlayerPositionY < Console.WindowHeight){
         Console.SetCursorPosition(currentPlayerPositionX, currentPlayerPositionY);
         Console.Write(currentPlayer);
+        Console.SetCursorPosition(currentPlayerPositionX-currentPlayer.Length+4, currentPlayerPositionY);
     }
 
 
