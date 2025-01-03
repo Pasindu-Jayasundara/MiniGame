@@ -1,0 +1,15 @@
+F:\pasindu\Git\project\MiniGame\bin\Debug\net9.0\MiniGame.exe
+F:\pasindu\Git\project\MiniGame\bin\Debug\net9.0\MiniGame.deps.json
+F:\pasindu\Git\project\MiniGame\bin\Debug\net9.0\MiniGame.runtimeconfig.json
+F:\pasindu\Git\project\MiniGame\bin\Debug\net9.0\MiniGame.dll
+F:\pasindu\Git\project\MiniGame\bin\Debug\net9.0\MiniGame.pdb
+F:\pasindu\Git\project\MiniGame\obj\Debug\net9.0\MiniGame.GeneratedMSBuildEditorConfig.editorconfig
+F:\pasindu\Git\project\MiniGame\obj\Debug\net9.0\MiniGame.AssemblyInfoInputs.cache
+F:\pasindu\Git\project\MiniGame\obj\Debug\net9.0\MiniGame.AssemblyInfo.cs
+F:\pasindu\Git\project\MiniGame\obj\Debug\net9.0\MiniGame.csproj.CoreCompileInputs.cache
+F:\pasindu\Git\project\MiniGame\obj\Debug\net9.0\MiniGame.sourcelink.json
+F:\pasindu\Git\project\MiniGame\obj\Debug\net9.0\MiniGame.dll
+F:\pasindu\Git\project\MiniGame\obj\Debug\net9.0\refint\MiniGame.dll
+F:\pasindu\Git\project\MiniGame\obj\Debug\net9.0\MiniGame.pdb
+F:\pasindu\Git\project\MiniGame\obj\Debug\net9.0\MiniGame.genruntimeconfig.cache
+F:\pasindu\Git\project\MiniGame\obj\Debug\net9.0\ref\MiniGame.dll
