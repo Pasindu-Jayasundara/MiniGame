@@ -17,11 +17,10 @@ int consumedFoodCount = 0;
 
 Random random = new Random();
 
-DisplayRandomFoodInRandomLocations();
+SetUpGame();
 
 while(true){
     IsWindowResized();
-    MovePlayer();
 }
 
 void IsWindowResized(){
@@ -74,6 +73,9 @@ void FreezePlayer(){
 
 void MovePlayer(){
 
+    int playerLastX = currentPlayerPositionX;
+    int playerLastY = currentPlayerPositionY;
+
     ConsoleKeyInfo keyInfo = Console.ReadKey();
 
     if(keyInfo.Key == ConsoleKey.UpArrow){
@@ -86,6 +88,18 @@ void MovePlayer(){
         currentPlayerPositionX++;
     }else if(keyInfo.Key == ConsoleKey.F){
         FreezePlayer();
+    }else{
+        MovePlayer();
+    }
+
+    if(currentPlayerPositionX < 0 || currentPlayerPositionX >= windowWidth || currentPlayerPositionY < 0 || currentPlayerPositionY >= windowHeight){
+        currentPlayerPositionX = playerLastX;
+        currentPlayerPositionY = playerLastY;
+    }
+
+    Console.SetCursorPosition(playerLastX, playerLastY);
+    for(int i=0; i<currentPlayer.Length; i++){
+        Console.Write(" ");
     }
 
     if(currentPlayerPositionX == currentFoodPositionX && currentPlayerPositionY == currentFoodPositionY){
@@ -96,6 +110,9 @@ void MovePlayer(){
 
     Console.SetCursorPosition(currentPlayerPositionX, currentPlayerPositionY);
     Console.Write(currentPlayer);
+
+    MovePlayer();
+
 }
 
 void SetUpGame(){
@@ -113,4 +130,13 @@ void SetUpGame(){
 
     Console.Clear();
     DisplayRandomFoodInRandomLocations();
+
+    if(currentPlayerPositionX > 0 && currentPlayerPositionX < Console.WindowWidth && currentPlayerPositionY > 0 && currentPlayerPositionY < Console.WindowHeight){
+        Console.SetCursorPosition(currentPlayerPositionX, currentPlayerPositionY);
+        Console.Write(currentPlayer);
+    }
+
+
+    MovePlayer();
+
 }
